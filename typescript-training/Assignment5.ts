@@ -1,11 +1,11 @@
-interface employee {     //define employee structure
+interface Employee {     //define employee structure
     name: string;
     baseSalary: number;
     experience: number;
     rating: number;
 }
 //store the employee records in an array
-let emp: employee[] = [
+let employees: Employee[] = [
     { name: "AliceJohnson", baseSalary: 75000.0, experience: 5.1, rating: 4.2 },
     { name: "Bob Smith", baseSalary: 68000.0, experience: 3.2, rating: 3.8 },
     { name: "Carol Davis", baseSalary: 82000.0, experience: 7.1, rating: 4.5 },
@@ -15,41 +15,40 @@ let emp: employee[] = [
 //create the map to store result
 let hikeMap: Map<string, number> = new Map();
 //Loop through employees and calculate hike
-for (let emp of employee) {
+for (let emp of employees) {
 
     let variablePayPercent: number;
     let bonus: number;
 
-}
-// Conditional statements based on rating
-if (emp.rating >= 4.0) {
-    variablePayPercent = 15.0;
-    bonus = 1500;
-}
-else if (emp.rating >= 3.0 && < 4.0) {
-    variablePayPercent = 10.0;
-    bonus = 1200;
-}
-else {
-    variablePayPercent = 3.0;
-    bonus = 300;
-}
-//
-// Extra reward for experience >= 5 years
-let reward: number = emp.experience >= 5 ? 5000 : 0
 
-// // Hike calculation
+    // Conditional statements based on rating
+    if (emp.rating >= 4.0) {
+        variablePayPercent = 15.0;
+        bonus = 1500;
+    }
+    else if (emp.rating >= 3.0 && emp.rating <4.0) {
+        variablePayPercent = 10.0;
+        bonus = 1200;
+    }
+    else {
+        variablePayPercent = 3.0;
+        bonus = 300;
+    }
+    //
+    // Extra reward for experience >= 5 years
+    let reward: number = emp.experience >= 5 ? 5000 : 0
 
-let hike: number = (emp.baseSalary * (variablePayPercent / 100)) + bonus + reward;
-let hikePercent: number = (hike / emp.baseSalary) * 100;
+    // // Hike calculation
+
+  let hike: number = (emp.baseSalary * (variablePayPercent / 100)) + bonus + reward;
+    let hikePercent: number = (hike / emp.baseSalary) * 100;
 
     // Store result in Map
-hikeMap.set(emp.name , hikePercent);
+    hikeMap.set(emp.name, hikePercent);
+
+}
 
 // Step 5: Print results
 for (let [name, hikePercent] of hikeMap) {
     console.log(`${name} → Hike % = ${hikePercent.toFixed(2)}%`);
 }
-
-
-
